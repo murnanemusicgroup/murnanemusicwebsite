@@ -1,0 +1,447 @@
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+
+/* General Body Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Prevent scrolling */
+    /* Removed flex properties here as slideshow is now absolute */
+    height: 100vh; /* Ensure body takes full viewport height */
+    position: relative; /* If needed for children absolute positioning relative to body */
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background-color: rgba(0, 0, 0, 0.4); /* THIS IS THE SEMI-TRANSPARENT PART */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center logo horizontally */
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+.header-logo {
+    max-height: 70px; /* Adjust as needed for your logo size */
+    width: auto;
+    display: block; /* Remove extra space below image */
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    position: absolute;
+    left: 20px; /* Adjust as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1001; /* Above header content */
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger to X transformation */
+.hamburger-menu.open .bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger-menu.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.open .bar:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Adjusted: Start off-screen by its new width */
+    width: 300px; /* Adjusted: Wider sidebar */
+    height: 100vh;
+    background-color: #1a1a1a; /* Darker background for sidebar */
+    padding-top: 90px; /* Space for the header */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: left 0.3s ease-in-out; /* Smooth slide effect */
+    z-index: 999; /* Below header, above main content */
+}
+
+.sidebar.open {
+    left: 0; /* Slide in */
+}
+
+.sidebar-item {
+    color: white;
+    text-decoration: none;
+    padding: 15px 0;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease;
+}
+
+.sidebar-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Slideshow Container */
+.slideshow-container {
+    position: absolute; /* Change from relative to absolute */
+    top: 0;           /* Start from the very top of the viewport */
+    left: 0;
+    width: 100vw;
+    height: 100vh; /* Make it full viewport height */
+    overflow: hidden;
+    z-index: 1; /* Ensure it's below header and sidebar */
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* This will now be 100% of the 100vh container */
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Still push content to the bottom */
+    align-items: center;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire container without distortion */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Image behind text */
+}
+
+.artist-name {
+    font-family: 'Rock Salt', cursive;
+    font-size: 2em;
+    color: #007bff;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 60px; /* Adjusted: 50px for footer height + 10px padding/spacing */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+
+/* Footer */
+.footer {
+    position: fixed; /* Keep it fixed at the bottom */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 1000; /* Ensure it's above slideshow (z-index 1) */
+}
+
+.footer-left {
+    font-size: 0.8em;
+}
+
+.footer-center a {
+    color: white;
+    font-size: 1.2em;
+    margin: 0 10px;
+    text-decoration: none; /* No underline */
+    transition: color 0.2s ease;
+}
+
+.footer-center a:hover {
+    color: #007bff; /* Blue hover for social icons */
+}
+
+.footer-right a {
+    color: white;
+    text-decoration: none; /* No underline */
+    margin: 0 5px;
+    font-size: 0.9em;
+    transition: color 0.2s ease;
+}
+
+.footer-right a:hover {
+    color: #aaa; /* Lighter white on hover */
+}
+
+/* Cookie Consent Pop-up Styling */
+.cookie-consent-popup {
+    /* Positioning for Close to Bottom & Horizontal Centering */
+    position: fixed;
+    bottom: 20px; /* Adjust this value to control distance from the bottom */
+    left: 50%;
+    transform: translateX(-50%); /* Only horizontal centering */
+
+    /* Box Model & Appearance */
+    background-color: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow for a floating effect */
+    border-radius: 0; /* NO rounded corners */
+    padding: 20px 30px; /* Adjusted padding: top/bottom 20px, left/right 30px */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+
+    /* Dimensions - WIDER BOX */
+    width: 95%; /* Make it wider on most screens */
+    max-width: 900px; /* Significantly wider for larger screens */
+    max-height: 90vh; /* Max height relative to viewport height */
+    overflow-y: auto; /* Enable scrolling if content exceeds max-height */
+
+    /* Hiding/Showing with transition for opacity/visibility */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, bottom 0.4s ease-in-out;
+    z-index: 1000;
+    
+    font-family: Arial, sans-serif;
+}
+
+.cookie-consent-popup.show {
+    opacity: 1;
+    visibility: visible;
+    bottom: 20px; /* Ensure it moves to this position when 'show' class is added */
+}
+
+.cookie-consent-content {
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    transition: height 0.3s ease-in-out;
+    display: flex; /* Use flexbox for content layout */
+    align-items: center; /* Vertically align items */
+    justify-content: space-between; /* Space out message and buttons */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 15px; /* Gap between message and buttons/links */
+}
+
+/* Initial Cookie View */
+.cookie-view {
+    display: none;
+    text-align: left;
+    width: 100%; /* Ensure views take full width when active */
+}
+
+.cookie-view.active {
+    display: block;
+}
+
+.cookie-message {
+    font-size: 13px; /* REALLY SMALL FONT SIZE */
+    font-family: Arial, sans-serif;
+    line-height: 1.4; /* Adjusted line height for readability */
+    margin-bottom: 0; /* Remove bottom margin as flexbox handles spacing */
+    color: #333;
+    flex-grow: 1; /* Allow message to take up available space */
+    max-width: calc(100% - 200px); /* Adjust max-width to leave space for buttons, will be overridden by media queries */
+}
+
+.cookie-links {
+    margin-bottom: 0; /* Remove bottom margin */
+    white-space: nowrap; /* Keep links inline if possible */
+    text-align: center;
+}
+
+.cookie-links .privacy-policy-link {
+    color: #000; /* Standard link color */
+    text-decoration: none;
+    font-size: 12px; /* Smaller font size for links */
+    text-align: center;
+}
+
+.cookie-links .privacy-policy-link:hover {
+    text-decoration: underline;
+}
+
+.cookie-buttons {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the RIGHT */
+    gap: 10px; /* Space between buttons */
+    flex-shrink: 0; /* Prevent buttons from shrinking */
+}
+
+.cookie-button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.cookie-button:hover {
+    background-color: #333;
+}
+
+.cookie-button-centered {
+    display: block; /* Make it a block element */
+    margin: 20px auto; /* Center horizontally and add some top/bottom margin */
+    width: fit-content; /* Allow it to take only the necessary width */
+    max-width: 100%; /* Ensure it doesn't overflow on small screens */
+}
+
+/* Detailed Cookie View */
+.murnane-music-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.murnane-music-logo img {
+    max-width: 150px; /* Adjust logo size */
+    height: auto;
+}
+
+.detailed-cookie-text {
+    font-size: 12px; /* VERY SMALL FONT SIZE */
+    line-height: 1.5;
+    margin-bottom: 10px; /* Slightly reduced margin */
+    color: #555;
+}
+
+.detailed-cookie-text .text-link {
+    color: #000;
+    text-decoration: none;
+}
+
+.detailed-cookie-text .text-link-default {
+    text-decoration: none;
+}
+
+.detailed-cookie-text .text-link:hover {
+    text-decoration: underline;
+}
+
+.cookie-checkboxes {
+    display: flex;
+    flex-direction: row; /* Changed from column to row */
+    flex-wrap: wrap; /* Allow checkboxes to wrap to the next line on smaller screens */
+    align-items: center; /* Vertically align items in the row */
+    justify-content: center; /* Center checkboxes horizontally within their container */
+    gap: 20px; /* Space between checkbox items */
+    margin: 15px 0; /* Keep existing margin */
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0; /* Remove individual item bottom margin as gap handles spacing */
+    cursor: pointer;
+    font-size: 13px;
+}
+
+/* Custom Checkbox Styling */
+.checkbox-item input[type="checkbox"] {
+    /* Hide the default checkbox */
+    -webkit-appearance: none; /* For Safari/Chrome */
+    -moz-appearance: none;    /* For Firefox */
+    appearance: none;         /* Standard property */
+    border: 1px solid #ccc; /* Give it a subtle border if you want */
+    width: 18px;            /* Size of your custom square */
+    height: 18px;
+    border-radius: 3px;     /* Slightly rounded corners, adjust if needed */
+    margin-right: 8px;      /* Keep existing margin */
+    cursor: pointer;
+    position: relative;     /* Needed for positioning the checkmark pseudo-element */
+    display: inline-block; /* Ensure it behaves like a block for sizing */
+    vertical-align: middle; /* Align with text */
+    flex-shrink: 0; /* Prevent shrinking in flex container */
+}
+
+/* Style the custom background when unchecked */
+.checkbox-item input[type="checkbox"] {
+    background-color: white; /* Default background for unchecked */
+    border-color: #555; /* Darker border for the checkbox box */
+}
+
+/* Style the custom background when checked */
+.checkbox-item input[type="checkbox"]:checked {
+    background-color: black; /* Black background when checked */
+    border-color: black; /* Make border black too when checked */
+}
+
+/* Create the custom checkmark */
+.checkbox-item input[type="checkbox"]:checked::before {
+    content: '\2713'; /* Unicode character for a checkmark (✓) */
+    font-size: 14px; /* Size of the checkmark */
+    color: white;    /* White checkmark color */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the checkmark */
+    line-height: 1; /* Adjust line-height to prevent extra spacing */
+}
+
+/* Special styling for disabled essential checkbox */
+.checkbox-item.essential input[type="checkbox"] {
+    background-color: #eee; /* Lighter background for disabled */
+    border-color: #bbb;
+    cursor: not-allowed;
+}
+
+.checkbox-item.essential input[type="checkbox"]:checked::before {
+    color: #999; /* Greyer checkmark for disabled checked */
+}
+
+.checkbox-item.essential {
+    cursor: not-allowed;
+}
+
+.checkbox-item.essential label {
+    color: #888;
+}
+
+.checkbox-item.essential:hover {
+    cursor: not-allowed;
+}
+
+.checkbox-item.essential input[type="checkbox"][disabled] {
+    cursor: inherit;
+}
+
+.detailed-links {
+    margin-top: 15px; /* Adjusted margin */
+    text-align: center;
+}
+
+.detailed-links .text-link {
+    color: #000;
+    text-decoration: none;
+    margin: 0 8px; /* Reduced margin */
+    font-size: 12px; /* Smaller font size for detailed links */
+}
+
+.detailed-links .text-link:hover {
+    text-decoration: underline;
+}
