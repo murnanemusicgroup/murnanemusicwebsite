@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murnane Music Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+</head>
+<body>
+
+    <div class="header">
+        <div class="hamburger-menu" id="hamburgerMenu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <img src="/pictures/mmglogo.png" alt="MMG Logo" class="header-logo">
+        </div>
+
+    <div class="sidebar" id="sidebar">
+        <a href="" class="sidebar-item">HOME</a>
+        <a href="labels" class="sidebar-item">OUR LABELS & BRANDS</a>
+        <a href="contact-us" class="sidebar-item">CONTACT US</a>
+    </div>
+
+    <div class="slideshow-container">
+        <div class="slide active">
+            <img src="/pictures/leelanddaniel.png" alt="Leeland Daniel Banner">
+            <p class="artist-name">LEELAND DANIEL</p>
+        </div>
+        <div class="slide">
+            <img src="/pictures/amydukemurnane.png" alt="Amy Duke Murnane Banner">
+            <p class="artist-name">AMY DUKE MURNANE</p>
+        </div>
+        <div class="slide">
+            <img src="/pictures/meechie.png" alt="MEECHIE Banner">
+            <p class="artist-name">MEECHIE</p>
+        </div>
+        </div>
+
+    <div class="footer">
+        <div class="footer-left">
+            &copy; Copyright 2025 Murnane Music Group. All rights reserved.
+        </div>
+        <div class="footer-center">
+            <a href="https://facebook.com/your-mmg-page" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com/your-mmg-page" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/your-mmg-channel" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="mailto:info@mmg.leelandaniel.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div class="footer-right">
+            <a href="terms">Terms of Service</a> /
+            <a href="privacy-policy">Privacy Policy</a> /
+            <a href="#" id="showCookieChoices">Cookie Choices</a>
+        </div>
+    </div>
+    
+    <div id="cookieConsent" class="cookie-consent-popup">
+    <div class="cookie-consent-content">
+        <div id="initialCookieView" class="cookie-view active">
+            <div class="cookie-top-section">
+                <p class="cookie-message">We'd like to use cookies and similar technologies to personalize your experiences on our sites and to advertise on other sites. For more information and additional choices click Cookie Choices.</p>
+                <div class="cookie-buttons">
+                    <button id="acceptCookies" class="cookie-button">I understand</button>
+                    <button id="showDetailedChoices" class="cookie-button">Cookie Choices</button>
+                </div>
+            </div>
+            <div class="cookie-bottom-section">
+                <div class="cookie-links">
+                    <a href="privacy-policy" class="privacy-policy-link">Privacy Policy</a>
+                </div>
+            </div>
+            </div>
+        <div id="detailedCookieView" class="cookie-view">
+             <div class="murnane-music-logo">
+                <img src="/pictures/cookies/mmglogo.png" alt="Murnane Music Group Logo">
+            </div>
+            <p class="detailed-cookie-text">
+                <strong>Information We Collect About You</strong><br>
+                We want to be transparent about the data we and our partners collect and how we use it, so you can best exercise control over your personal data. For more information, please see our Privacy Policy</a>.
+            </p>
+            <p class="detailed-cookie-text">
+                <strong>Information Our Partners Collect</strong><br>
+                We use cookies or other tracking technologies from the following partners. These are used to personalize your experience, connect with social networks, and tailor advertising to better match your interests. For more information <a href="https://cookies.murnanemusicgroup.leelandaniel.com" target="_blank" class="text-link-default">Visit tracking technologies</a>
+            </p>
+
+            <div class="cookie-checkboxes">
+                <div class="checkbox-item essential">
+                    <input type="checkbox" id="essentialCookies" checked disabled>
+                    <label for="essentialCookies" class="disabled-checkbox-label">Essential</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="functionalCookies">
+                    <label for="functionalCookies">Functional</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="analyticsCookies">
+                    <label for="analyticsCookies">Analytics</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="advertisingCookies">
+                    <label for="advertisingCookies">Advertising</label>
+                </div>
+            </div>
+
+            <button id="confirmCookieChoices" class="cookie-button cookie-button-centered"><strong>Confirm</strong></button>
+
+            <div class="detailed-links">
+                <a href="#" id="showSimplerChoices" class="text-link">Simpler choices</a>
+                <a href="privacy-policy" class="text-link">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <script src="js/cookieConsent.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
